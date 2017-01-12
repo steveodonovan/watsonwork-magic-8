@@ -7,6 +7,28 @@ import request from "request";
 // Watson Work Services URL
 const watsonWork = "https://api.watsonwork.ibm.com";
 
+//
+const responses=["It is certain",
+                 "It is decidedly so",
+                 "Without a doubt",
+                 "Yes, definitely",
+                 "You may rely on it",
+                 "As I see it, yes",
+                 "Most likely",
+                 "Yes",
+                 "Signs point to yes",
+                 "Reply hazy try again",
+                 "Ask again later",
+                 "Better not tell you now",
+                 "Concentrate and ask again",
+                 "Don't count on it",
+                 "My reply is no",
+                 "My sources say no",
+                 "Outlook not so good",
+                 "Very doubtful",
+                 "Ask Anton",
+                 "Visit Cork, I hear its lovely this time of year!"]
+
 // Application Id, obtained from registering the application at https://developer.watsonwork.ibm.com
 const appId = process.env.NEWRELIC_CLIENT_ID;
 
@@ -21,7 +43,7 @@ const newrelic_auth = {
   newrelic_api_key: process.env.NEWRELIC_API_KEY
 }
 // Keyword to "listen" for when receiving outbound webhook calls.
-const webhookKeyword = "@newrelic";
+const webhookKeyword = "@magic8ball";
 
 const failMessage =
 `Hey, maybe it's me... maybe it's NewRelic, but I sense the fail whale should be here... Try again later`;
@@ -157,8 +179,8 @@ app.get('/', (req, res) => {
 // This is callback URI that Watson Workspace will call when there's a new message created
 app.post('/webhook', validateEvent, (req, res) => {
 
-  // Check if the first part of the message is '@newrelic'.
-  // This lets us "listen" for the '@newrelic' keyword.
+  // Check if the first part of the message is '@magic8ball'.
+  // This lets us "listen" for the '@magic8ball' keyword.
   if (req.body.content.indexOf(webhookKeyword) != 0) {
     ignoreMessage(res);
     return;
@@ -171,13 +193,8 @@ app.post('/webhook', validateEvent, (req, res) => {
   const spaceId = req.body.spaceId;
 
   // Parse newrelic query from message body.
-  // Expected format: <keyword> <newrelic query>
-  const newrelicQuery = req.body.content.split(' ')[1];
-  if(newrelicQuery === 'echo'){
-      sendMessage(spaceId,'Echo',req.body.content);
-  } else {
-      sendMessage(spaceId,'Unrecognized','unrecognized action:'+newrelicQuery);
-  }
+  // Expected format: <keyword>
+  sendMessage(spaceId,'Echo', _.shuffle(responses)[0];);
 
 });
 
