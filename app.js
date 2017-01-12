@@ -30,13 +30,13 @@ const responses=["It is certain",
                  "Visit Cork, I hear its lovely this time of year!"]
 
 // Application Id, obtained from registering the application at https://developer.watsonwork.ibm.com
-const appId = process.env.NEWRELIC_CLIENT_ID;
+const appId = "5122f3c5-6b58-4e8c-aaf4-e6b96435f791";
 
-// Application secret. Obtained from registration of application.
-const appSecret = process.env.NEWRELIC_CLIENT_SECRET;
+//Application secret. Obtained from registration of application.
+const appSecret = "75sa4w057fvtuxn9i8ewohn9mxvpga17";
 
-// Webhook secret. Obtained from registration of a webhook.
-const webhookSecret = process.env.NEWRELIC_WEBHOOK_SECRET;
+//Webhook secret. Obtained from registration of a webhook.
+const webhookSecret = "ja69xlx6zdfhyik1vi2u5yb9suplr8th";
 
 const newrelic_auth = {
   newrelic_license: process.env.NEWRELIC_LICENSE_KEY,
@@ -173,7 +173,7 @@ const sendMessage = (spaceId, title, message, state) => {
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  res.send('IBM Watson Workspace Integration for NewRelic is alive and happy!');
+  res.send('IBM Watson Workspace Integration for magic 8 ball is alive and happy!');
 });
 
 // This is callback URI that Watson Workspace will call when there's a new message created
