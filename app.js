@@ -38,15 +38,11 @@ const appSecret = "szr274khnvkbeccuyiub0xki98wrt8s";
 //Webhook secret. Obtained from registration of a webhook.
 const webhookSecret = "l1ojkhio8fzw2fivutju2n8yq2t66zxk";
 
-const newrelic_auth = {
-  newrelic_license: process.env.NEWRELIC_LICENSE_KEY,
-  newrelic_api_key: process.env.NEWRELIC_API_KEY
-}
 // Keyword to "listen" for when receiving outbound webhook calls.
 const webhookKeyword = "@magic8ball";
 
 const failMessage =
-`Hey, maybe it's me... maybe it's NewRelic, but I sense the fail whale should be here... Try again later`;
+`magic 8 ball fell and broke`;
 
 const app = express();
 
@@ -126,11 +122,6 @@ const sendMessage = (spaceId, title, message, state) => {
   const photosAPI = `photos`;
 
   let colorHex = '#1DA1F2';
-  if(state === 'open') {
-    colorHex = '#CC0000';
-  }else if (state === 'closed') {
-    colorHex = '#32CD32';
-  }
 
   // Format for sending messages to Workspace
   const messageData = {
@@ -194,7 +185,7 @@ app.post('/webhook', validateEvent, (req, res) => {
 
   // Parse newrelic query from message body.
   // Expected format: <keyword>
-  sendMessage(spaceId,'Echo', _.shuffle(responses)[0]);
+  sendMessage(spaceId,'Echo', responses[Math.floor(Math.random()*responses.length)]);
 
 });
 
