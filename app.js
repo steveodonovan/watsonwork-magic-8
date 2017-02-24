@@ -30,13 +30,13 @@ const responses=["It is certain",
                  "Visit Cork, I hear its lovely this time of year!"]
 
 // Application Id, obtained from registering the application at https://developer.watsonwork.ibm.com
-const appId = "5122f3c5-6b58-4e8c-aaf4-e6b96435f791";
+const appId = "2ca25542-be23-4ae6-852d-98e60191f487";
 
 //Application secret. Obtained from registration of application.
-const appSecret = "75sa4w057fvtuxn9i8ewohn9mxvpga17";
+const appSecret = "szr274khnvkbeccuyiub0xki98wrt8s";
 
 //Webhook secret. Obtained from registration of a webhook.
-const webhookSecret = "ja69xlx6zdfhyik1vi2u5yb9suplr8th";
+const webhookSecret = "l1ojkhio8fzw2fivutju2n8yq2t66zxk";
 
 const newrelic_auth = {
   newrelic_license: process.env.NEWRELIC_LICENSE_KEY,
