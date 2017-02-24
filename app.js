@@ -185,7 +185,7 @@ app.post('/webhook', validateEvent, (req, res) => {
 
   // Parse newrelic query from message body.
   // Expected format: <keyword>
-  sendMessage(spaceId,'Echo', responses[Math.floor(Math.random()*responses.length)]);
+  sendMessage(spaceId,'Hmmm .. well in my opinion..', responses[Math.floor(Math.random()*responses.length)]);
 
 });
 
